@@ -1,5 +1,6 @@
 require('pg')
 require_relative('../db/sql_runner.rb')
+require_relative('./movie')
 
 class Actor
 
@@ -39,5 +40,15 @@ class Actor
      values = [@first_name, @last_name, @id]
      SqlRunner.run(sql, values)
     end
-    
+
+    def movies
+      sql = 'SELECT * FROM movies
+              INNER JOIN roles
+              ON movies.id = roles.movie_id
+              WHERE roles.actor_id = $1;'
+      movies = SqlRunner.run(sql, [@id])
+      return movies.map { |movies_hash| Movie.new(movies_hash) }
+    #return user object
+    end
+
 end #class end

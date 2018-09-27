@@ -38,5 +38,37 @@ movie1.save
 movie2.save
 movie3.save
 
-movie3.title = "Happy"
-movie3.update
+role1 = Role.new ({
+  'movie_id' => movie3.id,
+  'actor_id' => actor2.id,
+  'fee' => 3000000
+  })
+  role2 = Role.new ({
+  'movie_id' => movie2.id,
+  'actor_id' => actor1.id,
+  'fee' => 2000000
+  })
+
+  role3 = Role.new ({
+  'movie_id' => movie2.id,
+  'actor_id' => actor2.id,
+  'fee' => 2000000
+  })
+
+  role4 = Role.new ({
+  'movie_id' => movie2.id,
+  'actor_id' => actor3.id,
+  'fee' => 2000000
+  })
+  role1.save
+  role2.save
+  role3.save
+  role4.save
+
+binding.pry
+nil
+
+# movie3.title = "Happy"
+# movie3.update
+
+# p movie3.actors
